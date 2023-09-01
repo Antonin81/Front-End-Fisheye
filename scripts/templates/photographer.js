@@ -8,10 +8,10 @@ function photographerTemplate(data) {
 
         const link = document.createElement( 'a' );
         link.setAttribute("href", "#");
+        link.setAttribute("aria-label", name);
 
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
-        img.setAttribute("alt", name);
 
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
