@@ -1,15 +1,4 @@
     async function getPhotographers() {
-
-        fetch("../../data/photographer.json")
-        .then((response)=>{
-            console.log("fojhbl");
-            return response.json();
-        })
-        .then((data)=>{
-            console.log('data');
-            console.log(data);
-        }) 
-
         // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet, 
         // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
         let photographers = [
