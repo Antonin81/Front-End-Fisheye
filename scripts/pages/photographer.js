@@ -24,7 +24,7 @@ async function displayData(photographer) {
 }
 
 async function init() {
-    const urlParams = new URLSearchParams(window.location.search);
+    const urlParams = new URL(document.location).searchParams;
     const photographerId = urlParams.get('id');
     const { photographer } = await getPhotographer(photographerId);
     displayData(photographer);
