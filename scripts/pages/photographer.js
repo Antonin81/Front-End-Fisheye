@@ -21,6 +21,7 @@ async function getPhotographer(id) {
 
 async function displayData(photographer) {
     console.log(photographer);
+    document.getElementById("main").appendChild(photographerTemplate(photographer).getUserDescDOM())
 }
 
 async function init() {

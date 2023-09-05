@@ -39,5 +39,16 @@ function photographerTemplate(data) {
 
         return (article);
     }
-    return { name, picture, getUserCardDOM }
+
+    
+
+    function getUserDescDOM() {
+
+        const nameTitle = document.createElement("h2");
+        nameTitle.textContent=name;
+
+        return (nameTitle);
+    }
+
+    return { name, picture, getUserCardDOM, getUserDescDOM }
 }
