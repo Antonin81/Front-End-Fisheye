@@ -21,7 +21,11 @@ async function getPhotographer(id) {
 
 async function displayData(photographer) {
     console.log(photographer);
-    document.getElementById("main").appendChild(photographerTemplate(photographer).getUserDescDOM())
+    const main = document.getElementById("main");
+    const header = main.querySelector(".photograph-header");
+    const { headerFirstPart, img } = photographerTemplate(photographer).getUserDescDOM()
+    header.prepend(headerFirstPart);
+    header.append(img);
 }
 
 async function init() {

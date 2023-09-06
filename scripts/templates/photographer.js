@@ -44,10 +44,27 @@ function photographerTemplate(data) {
 
     function getUserDescDOM() {
 
-        const nameTitle = document.createElement("h2");
-        nameTitle.textContent=name;
+        const headerFirstPart = document.createElement("div");
 
-        return (nameTitle);
+        const nameTitle = document.createElement("h1");
+        nameTitle.textContent=name;
+        headerFirstPart.appendChild(nameTitle);
+
+        const location = document.createElement( 'p' );
+        location.textContent=city+", "+country;
+        location.classList.add("location");
+        headerFirstPart.appendChild(location);
+
+        const taglineParagraph = document.createElement( 'p' );
+        taglineParagraph.textContent=tagline;
+        taglineParagraph.classList.add("tagline");
+        headerFirstPart.appendChild(taglineParagraph);
+
+        const img = document.createElement( 'img' );
+        img.setAttribute("src", picture);
+        img.setAttribute("alt",name);
+
+        return {headerFirstPart,img};
     }
 
     return { name, picture, getUserCardDOM, getUserDescDOM }
