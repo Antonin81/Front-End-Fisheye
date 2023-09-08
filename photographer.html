@@ -15,11 +15,25 @@
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
+      <section class="photograph-pictures">
+        <form action="">
+          <label for="sortSelect">Trier par : </label>
+          <select  name="sortSelect" id="sortSelect">
+            <option value="popularity">Popularité</option>
+            <option value="date">Date</option>
+            <option value="title">Titre</option>
+          </select>
+        </form>
+        <div class="pictures" id="pictures">
+
+        </div>
+      </section>
+      
     </main>
     <div id="contact_modal">
 			<div class="modal">
 				<header>
-          <h2>Contactez-moi</h2>
+          <h2 aria-label="Contact Me">Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
 				<form>
@@ -33,5 +47,7 @@
 		</div>
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/utils/contactForm.js"></script>
+    <script src="scripts/templates/photographer.js"></script>
+    <script src="scripts/templates/media.js"></script>
   </body>
 </html>
