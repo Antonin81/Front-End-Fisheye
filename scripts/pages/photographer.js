@@ -40,13 +40,16 @@ async function displayData(photographer, pictures) {
     const main = document.getElementById("main");
     const header = main.querySelector(".photograph-header");
     const picturesSection = document.getElementById("pictures");
-    const { headerFirstPart, img } = photographerTemplate(photographer).getUserDescDOM()
+    const { headerFirstPart, img } = photographerTemplate(photographer).getUserDescDOM();
+    let likesCount = 0;
     pictures.forEach(picture=>{
-        console.log(picture);
+        likesCount += picture.likes;
         picturesSection.appendChild(mediaTemplate(picture).getPictureGridCardDOM(picture));
     });
+    const bottomSection = photographerTemplate(photographer).getBottomSectionDOM(likesCount);
     header.prepend(headerFirstPart);
     header.append(img);
+    main.appendChild(bottomSection);
 }
 
 async function init() {

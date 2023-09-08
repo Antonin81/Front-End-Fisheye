@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" >
     <title>Fisheye - photographe </title>
   </head>
   <body>
@@ -13,12 +14,12 @@
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" onclick="displayModal()" aria-label="Contact Me">Contactez-moi</button>
       </div>
       <section class="photograph-pictures">
-        <form action="">
+        <form action="" id="tri">
           <label for="sortSelect">Trier par : </label>
-          <select  name="sortSelect" id="sortSelect">
+          <select  name="sortSelect" id="sortSelect" aria-label="Order by">
             <option value="popularity">Popularité</option>
             <option value="date">Date</option>
             <option value="title">Titre</option>
