@@ -17,14 +17,18 @@
         <button class="contact_button" onclick="displayModal()" aria-label="Contact Me">Contactez-moi</button>
       </div>
       <section class="photograph-pictures">
-        <form action="" id="tri">
-          <label for="sortSelect">Trier par : </label>
-          <select  name="sortSelect" id="sortSelect" aria-label="Order by">
-            <option value="popularity">Popularité</option>
-            <option value="date">Date</option>
-            <option value="title">Titre</option>
-          </select>
-        </form>
+        <div id="tri">
+          <label for="sortSelect" id="tri-label">Trier par : </label>
+          <div class="select-section">
+            <button onclick="toggleDropdown()" id="sortSelect" role="button" aria-haspopup="listbox" aria-expanded="false">Titre</button>
+            <ul class="test-dropdown hidden" role="listbox" aria-labelledby="tri-label" aria-activedescendant="true" aria-hidden="true">
+              <li role="option"><button onclick="optionSelected()" data-value="title" aria-selected="true" aria-label="sort by title">Titre</button></li>
+              <li role="option"><button onclick="optionSelected()" data-value="popularity" aria-selected="false" aria-label="sort by popularity">Popularité</button></li>
+              <li role="option"><button onclick="optionSelected()" data-value="date" aria-selected="false" aria-label="sort by date">Date</button></li>
+            </ul>
+          </div>
+          
+        </div>
         <div class="pictures" id="pictures">
 
         </div>
@@ -50,5 +54,6 @@
     <script src="scripts/utils/contactForm.js"></script>
     <script src="scripts/templates/photographer.js"></script>
     <script src="scripts/templates/media.js"></script>
+    <script src="scripts/utils/tri.js"></script>
   </body>
 </html>
