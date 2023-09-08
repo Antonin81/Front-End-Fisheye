@@ -7,7 +7,7 @@ function photographerTemplate(data) {
         const article = document.createElement( 'article' );
 
         const link = document.createElement( 'a' );
-        link.setAttribute("href", "/photographer.html?id="+id);
+        link.setAttribute("href", "./photographer.html?id="+id);
         link.setAttribute("aria-label", name);
 
         const img = document.createElement( 'img' );
