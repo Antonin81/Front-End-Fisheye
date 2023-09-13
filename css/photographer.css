@@ -10,6 +10,13 @@
     height: 100%;
 }
 
+#lightbox_modal{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: white;
+}
+
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;

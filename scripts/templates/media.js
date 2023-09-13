@@ -14,12 +14,14 @@ function mediaTemplate(data) {
         pictureLink.setAttribute("title",title+", closeup view");
 
         if(image!=undefined){
+            pictureLink.setAttribute("onclick",`openLightboxModal({type:"image",title:"${title}",path:"${picturePath}"})`)
             const pictureImg = document.createElement('img');
             pictureImg.setAttribute("src",picturePath);
             pictureImg.setAttribute("alt",title);
             pictureLink.appendChild(pictureImg);
             pictureCard.appendChild(pictureLink);
         } else {
+            pictureLink.setAttribute("onclick",`openLightboxModal({type:"video",title:"${title}",path:"${videoPath}"})`)
             const pictureVideo = document.createElement('video');
             const videoSrc = document.createElement("source");
             videoSrc.setAttribute("src",videoPath);
