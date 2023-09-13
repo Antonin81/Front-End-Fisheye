@@ -9,10 +9,10 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
+    <header aria-hidden="false">
       <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Fisheye Home Page"/></a>
     </header>
-    <main id="main">
+    <main id="main" aria-hidden="false">
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()" aria-label="Contact Me">Contactez-moi</button>
       </div>
@@ -35,18 +35,24 @@
       </section>
       
     </main>
-    <div id="contact_modal">
+    <div id="contact_modal" role="dialog" aria-labelledby="contact_modal-h2" aria-hidden="true">
 			<div class="modal">
 				<header>
-          <h2 aria-label="Contact Me">Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <h2 aria-label="Contact Me" id="contact_modal-h2">Contactez-moi</h2>
+          <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="Close Contact form" tabindex="0" />
         </header>
-				<form>
+				<form onsubmit="validateForm();">
 					<div>
-						<label>Prénom</label>
-						<input />
+						<label for="inputFirstname" id="inputFirstnameLabel" >Prénom</label>
+						<input name="inputFirstname" id="inputFirstname" aria-labelledby="inputFirstnameLabel" type="text" />
+            <label for="inputLastname" id="inputLastnameLabel">Nom</label>
+						<input name="inputLastname" id="inputLastname" aria-labelledby="inputLastnameLabel" type="text"/>
+            <label for="inputEmail" id="inputEmailLabel">Email</label>
+						<input name="inputEmail" id="inputEmail" aria-labelledby="inputEmailLabel" type="text"/>
+            <label for="inputMessage" id="inputMessageLabel">Message</label>
+						<textarea name="inputMessage" id="inputMessage" aria-labelledby="inputMessageLabel" type="text"></textarea>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" type="submit" aria-label="Send">Envoyer</button>
 				</form>
 			</div>
 		</div>
