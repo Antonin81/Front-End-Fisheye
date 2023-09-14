@@ -8,6 +8,7 @@
     background-color: rgba(0, 0, 0, 0.2);
     overflow: auto;
     height: 100%;
+    cursor: pointer;
 }
 
 #lightbox_modal{
@@ -15,6 +16,30 @@
     position: fixed;
     inset: 0;
     background-color: white;
+    cursor: pointer;
+    height: 100vh;
+}
+
+.lightbox{
+    position: relative;
+    margin: 40px 90px 0 90px;
+}
+
+.lightbox-cross{
+    position: absolute;
+    right: 0;
+}
+
+.lightbox-arrows-and-media{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.lightbox-media-content{
+    object-fit: cover;
+    max-width: 90vw;
+    height: 90vh;
 }
 
 .photograph-header {
@@ -26,6 +51,14 @@
     justify-content: space-between;
     align-items: center;
     max-width: calc(1240px - 48px);
+}
+
+.lightbox-media h3{
+    color: #901C1C;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1;
+    margin: 0;
 }
 
 .photograph-header h1 {
