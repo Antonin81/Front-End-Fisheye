@@ -1,56 +1,116 @@
-function openLightboxModal({type, title, path}){
+function openLightboxModal(order){
     event.preventDefault();
-    console.log("type : "+type,"title : "+title,"path : "+path);
     const lightbox = document.getElementById("lightbox_modal");
+    const cross = document.querySelector(".lightbox-cross");
     lightbox.style.display="block";
-    clearLightbox();
-    if(type=="image"){
-        displayImage(type, title, path);
-    } else {
-        displayVideo(type, title, path);
+    document.querySelector("header").setAttribute("aria-hidden","true");
+    document.querySelector("main").setAttribute("aria-hidden","true");
+    document.getElementById("contact_modal").setAttribute("aria-hidden","true");
+    lightbox.setAttribute("aria-hidden","false");
+    cross.focus();
+    cross.setAttribute("onclick",`closeLightboxModal(${order})`);
+    let mediasList = lightbox.querySelectorAll("li");
+    for (media of mediasList){
+        media.style.display="none";
     }
-    displayTitle(title);
+    displayMedia(order);
+    setOrderArrow(order);
 }
 
-function clearLightbox(){
-    const mediaSection = document.querySelector(".lightbox-media");
-    console.log(mediaSection.firstChild.nodeType);
-    if(mediaSection.firstChild.nodeType!=3){
-        mediaSection.firstChild.remove();
-    }
-   
+function displayMedia(order){
+    const lightbox = document.getElementById("lightbox_modal");
+    lightbox.querySelector(`[data-order="${order}"]`).style.display="block";
 }
 
-function displayImage(type, title, path){
-    const imageSection = document.querySelector(".lightbox-media");
-
-    const image = document.createElement('img');
-    image.setAttribute("src",path);
-    image.setAttribute("alt",title);
-    image.classList.add("lightbox-media-content");
-
-    imageSection.prepend(image);
-}
-
-function displayVideo(type, title, path){
-    const imageSection = document.querySelector(".lightbox-media");
-
-    const video = document.createElement('video');
-    const videoSrc = document.createElement("source");
-    videoSrc.setAttribute("src",path);
-    video.setAttribute("controls","true");
-    video.classList.add("lightbox-media-content");
-    video.appendChild(videoSrc);
-
-    imageSection.prepend(video);
-}
-
-function displayTitle(title){
-    const titleSection = document.getElementById("lightbox_modal").querySelector("h3");
-    titleSection.textContent=title;
-}
-
-function closeLightboxModal(){
+function closeLightboxModal(order){
     const lightbox = document.getElementById("lightbox_modal");
     lightbox.style.display="none";
+    document.querySelector("header").setAttribute("aria-hidden","false");
+    document.querySelector("main").setAttribute("aria-hidden","false");
+    lightbox.setAttribute("aria-hidden","true");
+    document.getElementById("pictures").querySelector(`[data-order="${order}"]`).querySelector("a").focus();
 }
+
+function setOrderArrow(order){
+    const leftArrow = document.querySelector(".lightbox-arrow-left");
+    const rightArrow = document.querySelector(".lightbox-arrow-right");
+    const cross = document.querySelector(".lightbox-cross");
+
+    leftArrow.setAttribute("onclick",`previousMedia(${order})`);
+    rightArrow.setAttribute("onclick",`nextMedia(${order})`);
+    cross.setAttribute("onclick",`closeLightboxModal(${order})`);
+}
+
+function previousMedia(order){
+    const lightbox = document.getElementById("lightbox_modal");
+    const maxOrder = lightbox.getAttribute("data-max-order");
+
+    if(order==0){
+        lightbox.querySelector(`[data-order="${maxOrder-1}"]`).style.display="block";
+        lightbox.querySelector(`[data-order="${maxOrder-1}"]`).setAttribute("aria-hidden","false");
+        lightbox.querySelector(`[data-order="${order}"]`).style.display="none";
+        lightbox.querySelector(`[data-order="${order}"]`).setAttribute("aria-hidden","true");
+        setOrderArrow(maxOrder-1);
+    } else {
+        lightbox.querySelector(`[data-order="${order-1}"]`).style.display="block";
+        lightbox.querySelector(`[data-order="${order-1}"]`).setAttribute("aria-hidden","false");
+        lightbox.querySelector(`[data-order="${order}"]`).style.display="none";
+        lightbox.querySelector(`[data-order="${order}"]`).setAttribute("aria-hidden","true");
+        setOrderArrow(order-1);
+    }
+
+}
+
+function nextMedia(order){
+    const lightbox = document.getElementById("lightbox_modal");
+    const maxOrder = lightbox.getAttribute("data-max-order");
+
+    if(order==maxOrder-1){
+        lightbox.querySelector(`[data-order="${0}"]`).style.display="block";
+        lightbox.querySelector(`[data-order="${0}"]`).setAttribute("aria-hidden","false");
+        lightbox.querySelector(`[data-order="${order}"]`).style.display="none";
+        lightbox.querySelector(`[data-order="${order}"]`).setAttribute("aria-hidden","true");
+        setOrderArrow(0);
+    } else {
+        lightbox.querySelector(`[data-order="${order+1}"]`).style.display="block";
+        lightbox.querySelector(`[data-order="${order+1}"]`).setAttribute("aria-hidden","false");
+        lightbox.querySelector(`[data-order="${order}"]`).style.display="none";
+        lightbox.querySelector(`[data-order="${order}"]`).setAttribute("aria-hidden","true");
+        setOrderArrow(order+1);
+    }
+}
+
+function initLightbox(){
+    const cross = document.querySelector(".lightbox-cross");
+    const lightbox = document.getElementById("lightbox_modal");
+    const leftArrow = document.querySelector(".lightbox-arrow-left");
+    const rightArrow = document.querySelector(".lightbox-arrow-right");
+    leftArrow.addEventListener("keydown",(e)=>{
+        if(e.keyCode==13){
+            leftArrow.click()
+        }
+    })
+    rightArrow.addEventListener("keydown",(e)=>{
+        if(e.keyCode==13){
+            rightArrow.click()
+        }
+    })
+    cross.addEventListener("keydown",(e)=>{
+        if(e.keyCode==13){
+            cross.click()
+        }
+    })
+    lightbox.addEventListener("keydown",(e)=>{
+        if(e.keyCode==37){
+            leftArrow.click();
+        }
+        if(e.keyCode==39){
+            rightArrow.click();
+        }
+        if(e.keyCode==27){
+            cross.click()
+        }
+    })
+}
+
+initLightbox();

@@ -5,6 +5,7 @@ function displayModal() {
     closeCross.focus();
     document.querySelector("header").setAttribute("aria-hidden","true");
     document.querySelector("main").setAttribute("aria-hidden","true");
+    document.getElementById("lightbox_modal").setAttribute("aria-hidden","true");
     modal.setAttribute("aria-hidden","false");
 }
 

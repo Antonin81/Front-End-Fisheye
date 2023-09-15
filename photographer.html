@@ -56,16 +56,24 @@
 				</form>
 			</div>
 		</div>
-    <div id="lightbox_modal" role="dialog" aria-hidden="true">
+    <div id="lightbox_modal" role="dialog" aria-hidden="true" aria-label="image closeup view">
 			<div class="lightbox">
-        <img src="assets/icons/closeLightbox.svg" onclick="closeLightboxModal()" aria-label="Close Lightbox" tabindex="0" class="lightbox-cross" />
+        <img src="assets/icons/closeLightbox.svg" aria-label="Close dialog" tabindex="0" class="lightbox-cross" />
 				<div class="lightbox-content">
           <div class="lightbox-arrows-and-media">
-            <img src="assets/icons/leftArrow.svg" alt="left arrow">
-            <div class="lightbox-media">
-              <h3></h3>
+
+            <div role="button" aria-label="Previous image" class="lightbox-arrow lightbox-arrow-left" tabindex="0">
+              <img src="assets/icons/leftArrow.svg" alt="left arrow">
             </div>
-            <img src="assets/icons/rightArrow.svg" alt="right arrow">
+
+            <ul class="lightbox-medias">
+
+            </ul>
+
+            <div role="button" aria-label="Next image" class="lightbox-arrow lightbox-arrow-right" tabindex="0">
+              <img src="assets/icons/rightArrow.svg" alt="right arrow">
+            </div>
+
           </div>
         </div>
 			</div>

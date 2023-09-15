@@ -41,10 +41,18 @@ async function displayData(photographer, pictures) {
     const header = main.querySelector(".photograph-header");
     const picturesSection = document.getElementById("pictures");
     const { headerFirstPart, img } = photographerTemplate(photographer).getUserDescDOM();
+    const lightboxMedias = document.querySelector(".lightbox-medias");
+    const lightbox = document.getElementById("lightbox_modal");
+
+    lightbox.setAttribute("data-max-order",pictures.length);
+
     let likesCount = 0;
+    let mediaOrder = 0;
     pictures.forEach(picture=>{
         likesCount += picture.likes;
-        picturesSection.appendChild(mediaTemplate(picture).getPictureGridCardDOM(picture));
+        picturesSection.appendChild(mediaTemplate(picture).getPictureGridCardDOM(mediaOrder));
+        lightboxMedias.appendChild(mediaTemplate(picture).getLightboxMediaDOM(mediaOrder));
+        mediaOrder+=1;
     });
     const bottomSection = photographerTemplate(photographer).getBottomSectionDOM(likesCount);
     header.prepend(headerFirstPart);
