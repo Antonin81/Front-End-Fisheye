@@ -58,7 +58,7 @@ function validateMessage(message){
     return message!="";
 }
 
-function init(){
+function initContact(){
     const modal = document.getElementById("contact_modal");
     const closeCross = modal.querySelector("img");
     closeCross.addEventListener("keydown",(e)=>{
@@ -73,4 +73,4 @@ function init(){
     })
 }
 
-init();
+initContact();
