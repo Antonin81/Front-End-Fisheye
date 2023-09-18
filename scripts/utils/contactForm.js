@@ -7,6 +7,7 @@ function displayModal() {
     document.querySelector("main").setAttribute("aria-hidden","true");
     document.getElementById("lightbox_modal").setAttribute("aria-hidden","true");
     modal.setAttribute("aria-hidden","false");
+    hideSuccessMessage();
 }
 
 function closeModal() {
@@ -78,11 +79,8 @@ function logSuccessMessage(){
 
 function hideSuccessMessage(){
     const successMessage=document.getElementById("successMessage");
-    if (successMessage!=undefined){
-        successMessage.setAttribute("aria-hidden","true");
-        successMessage.classList.add("hidden");
-
-    }
+    successMessage.setAttribute("aria-hidden","true");
+    successMessage.classList.add("hidden");
 }
 
 function reinitializeErrors(list){
