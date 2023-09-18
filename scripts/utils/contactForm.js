@@ -6,6 +6,7 @@ function displayModal() {
     document.querySelector("header").setAttribute("aria-hidden","true");
     document.querySelector("main").setAttribute("aria-hidden","true");
     modal.setAttribute("aria-hidden","false");
+    hideSuccessMessage();
 }
 
 function closeModal() {
@@ -77,11 +78,8 @@ function logSuccessMessage(){
 
 function hideSuccessMessage(){
     const successMessage=document.getElementById("successMessage");
-    if (successMessage!=undefined){
-        successMessage.setAttribute("aria-hidden","true");
-        successMessage.classList.add("hidden");
-
-    }
+    successMessage.setAttribute("aria-hidden","true");
+    successMessage.classList.add("hidden");
 }
 
 function reinitializeErrors(list){
