@@ -10,6 +10,20 @@
     height: 100%;
 }
 
+.hidden{
+    opacity: 0;
+}
+
+#successMessage{
+    font-size: 30px;
+    font-weight: bold;
+    width: calc( 100% - ( 2 * 35px ) );
+    text-align: center;
+    background-color: white;
+    padding: 1em;
+    border-radius: 1em;
+}
+
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
