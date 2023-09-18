@@ -44,14 +44,19 @@
 				<form onsubmit="validateForm();">
 					<div>
 						<label for="inputFirstname" id="inputFirstnameLabel" >Prénom</label>
-						<input name="inputFirstname" id="inputFirstname" aria-labelledby="inputFirstnameLabel" type="text" />
+						<input name="inputFirstname" id="inputFirstname" aria-labelledby="inputFirstnameLabel" type="text"/>
+            <p id="inputFirstnameError" class="hidden" aria-hidden="true">Veuillez entrer un prénom.</p>
             <label for="inputLastname" id="inputLastnameLabel">Nom</label>
 						<input name="inputLastname" id="inputLastname" aria-labelledby="inputLastnameLabel" type="text"/>
+            <p id="inputLastnameError" class="hidden" aria-hidden="true">Veuillez entrer un nom.</p>
             <label for="inputEmail" id="inputEmailLabel">Email</label>
 						<input name="inputEmail" id="inputEmail" aria-labelledby="inputEmailLabel" type="text"/>
+            <p id="inputEmailError" class="hidden" aria-hidden="true">Veuillez entrer un email valide.</p>
             <label for="inputMessage" id="inputMessageLabel">Message</label>
 						<textarea name="inputMessage" id="inputMessage" aria-labelledby="inputMessageLabel" type="text"></textarea>
-					</div>
+            <p id="inputMessageError" class="hidden" aria-hidden="true">Veuillez entrer un message.</p>
+          </div>
+          <p id="successMessage" class="hidden" aria-hidden="true">L'envoi a bien été effectué !</p>
           <button class="contact_button" type="submit" aria-label="Send">Envoyer</button>
 				</form>
 			</div>
