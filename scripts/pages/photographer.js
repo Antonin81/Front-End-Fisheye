@@ -58,6 +58,9 @@ async function init() {
     const { photographer } = await getPhotographer(photographerId);
     const pictures = await getPictures(photographer.id);
     displayData(photographer, pictures);
+    let modalTitle = document.getElementById("contact_modal-h2");
+    modalTitle.textContent = modalTitle.textContent+" "+photographer.name;
+    modalTitle.setAttribute("aria-label",modalTitle.getAttribute("aria-label")+" "+photographer.name);
 }
 
 init();
