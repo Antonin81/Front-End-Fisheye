@@ -117,12 +117,12 @@ function initContact(){
     const modal = document.getElementById("contact_modal");
     const closeCross = modal.querySelector("img");
     closeCross.addEventListener("keydown",(e)=>{
-        if(e.keyCode==13){
+        if(e.code=="Enter"){
             closeCross.click()
         }
     })
     modal.addEventListener("keydown",(e)=>{
-        if(e.keyCode==27){
+        if(e.code=="Escape"){
             closeCross.click()
         }
     })

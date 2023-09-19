@@ -86,28 +86,28 @@ function initLightbox(){
     const leftArrow = document.querySelector(".lightbox-arrow-left");
     const rightArrow = document.querySelector(".lightbox-arrow-right");
     leftArrow.addEventListener("keydown",(e)=>{
-        if(e.keyCode==13){
+        if(e.code=="Enter"){
             leftArrow.click()
         }
     })
     rightArrow.addEventListener("keydown",(e)=>{
-        if(e.keyCode==13){
+        if(e.code=="Enter"){
             rightArrow.click()
         }
     })
     cross.addEventListener("keydown",(e)=>{
-        if(e.keyCode==13){
+        if(e.code=="Enter"){
             cross.click()
         }
     })
     lightbox.addEventListener("keydown",(e)=>{
-        if(e.keyCode==37){
+        if(e.code=="ArrowLeft"){
             leftArrow.click();
         }
-        if(e.keyCode==39){
+        if(e.code=="ArrowRight"){
             rightArrow.click();
         }
-        if(e.keyCode==27){
+        if(e.code=="Escape"){
             cross.click()
         }
     })
