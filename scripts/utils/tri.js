@@ -24,7 +24,6 @@ function optionSelected(){
     let ulTarget = liTarget.parentElement;
     if(target.getAttribute("aria-selected")=="false"){
         ulTarget.children[0].querySelector("button").setAttribute("aria-selected","false");
-        console.log(target.getAttribute("data-value"));
 
         dropdownButton.textContent=target.textContent;
         target.parentElement.remove();
@@ -81,7 +80,6 @@ async function sortMedias(sortMode){
             break;
     }
     for (let picture of pictures){
-        console.log(picture);
         picturesSection.appendChild(mediaTemplate(picture).getPictureGridCardDOM(mediaOrder));
         mediaOrder+=1;
     }
