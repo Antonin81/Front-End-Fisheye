@@ -1,8 +1,10 @@
+import { openLightboxModal } from "../utils/lightboxModal.js";
+
 function mediaTemplate(data) {
 
     const { photographerId, title, image, video, likes } = data;
-    const picturePath = `assets/Sample Photos/${photographerId}/${image}`;
-    const videoPath = `assets/Sample Photos/${photographerId}/${video}`;
+    const picturePath = `assets/Sample_Photos/${photographerId}/${image}`;
+    const videoPath = `assets/Sample_Photos/${photographerId}/${video}`;
  
     function getPictureGridCardDOM(mediaOrder) {
         const pictureCard = document.createElement("article");
@@ -14,14 +16,14 @@ function mediaTemplate(data) {
         pictureLink.setAttribute("title",title+", closeup view");
 
         if(image!=undefined){
-            pictureLink.setAttribute("onclick",`openLightboxModal(${mediaOrder})`);
+            pictureLink.addEventListener("click",()=>{openLightboxModal(mediaOrder);});
             const pictureImg = document.createElement("img");
             pictureImg.setAttribute("src",picturePath);
             pictureImg.setAttribute("alt",title);
             pictureLink.appendChild(pictureImg);
             pictureCard.appendChild(pictureLink);
         } else {
-            pictureLink.setAttribute("onclick",`openLightboxModal(${mediaOrder})`);
+            pictureLink.addEventListener("click",()=>{openLightboxModal(mediaOrder);});
             const pictureVideo = document.createElement("video");
             const videoSrc = document.createElement("source");
             videoSrc.setAttribute("src",videoPath);
@@ -66,7 +68,7 @@ function mediaTemplate(data) {
         } else {
 
             const lightboxVideo = document.createElement("video");
-            lightboxVideo.setAttribute("controls","true");
+            lightboxVideo.setAttribute("controls","");
             const videoSrc = document.createElement("source");
             videoSrc.setAttribute("src",videoPath);
             lightboxVideo.appendChild(videoSrc);

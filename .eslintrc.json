@@ -26,7 +26,6 @@
         "no-duplicate-imports": "error",
         "no-unreachable": "error",
         "no-unused-vars": "error",
-        "no-use-before-define":"error",
         "camelcase": "error",
         "no-alert": "error",
         "no-empty": "error",

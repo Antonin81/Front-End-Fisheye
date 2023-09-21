@@ -1,5 +1,5 @@
-import { photographerTemplate } from "../templates/photographer";
-import { mediaTemplate } from "../templates/media";
+import { photographerTemplate } from "../templates/photographer.js";
+import { mediaTemplate } from "../templates/media.js";
 
 async function getPhotographer(id) {
 
@@ -75,3 +75,5 @@ async function init() {
 }
 
 init();
+
+export {getPhotographer, getPictures};

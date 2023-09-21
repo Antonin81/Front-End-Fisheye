@@ -1,13 +1,13 @@
 function logSuccessMessage(){
     const successMessage=document.getElementById("successMessage");
     successMessage.setAttribute("aria-hidden","false");
-    successMessage.classList.remove("hidden");
+    successMessage.style.display="block";
 }
 
 function hideSuccessMessage(){
     const successMessage=document.getElementById("successMessage");
     successMessage.setAttribute("aria-hidden","true");
-    successMessage.classList.add("hidden");
+    successMessage.style.display="none";
 }
 
 function reinitializeErrors(list){
@@ -126,6 +126,9 @@ function initContact(){
             closeCross.click();
         }
     });
+    document.querySelector(".photograph-header .contact_button").addEventListener("click",displayModal);
+    document.querySelector(".close-contact-modal").addEventListener("click",closeModal);
+    document.getElementById("contact_modal").addEventListener("submit",validateForm);
 }
 
 initContact();

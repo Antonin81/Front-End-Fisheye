@@ -69,7 +69,7 @@ function photographerTemplate(data) {
 
     function getBottomSectionDOM(likesCount){
 
-        const bottomSection = document.createElement("section");
+        const bottomSection = document.createElement("div");
         bottomSection.classList.add("bottom-section");
 
         const totalLikes = document.createElement("p");

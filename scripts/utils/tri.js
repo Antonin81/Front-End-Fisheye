@@ -1,5 +1,5 @@
-import {getPhotographer, getPictures} from "../pages/photographer";
-import { mediaTemplate } from "../templates/media";
+import {getPhotographer, getPictures} from "../pages/photographer.js";
+import { mediaTemplate } from "../templates/media.js";
 
 function openDropdown(dropdown){
     const button = document.getElementById("sortSelect");
@@ -85,14 +85,26 @@ function optionSelected(){
     let ulTarget = liTarget.parentElement;
     if(target.getAttribute("aria-selected")=="false"){
         ulTarget.children[0].querySelector("button").setAttribute("aria-selected","false");
+        ulTarget.children[0].querySelector("button").setAttribute("aria-checked","false");
 
         dropdownButton.textContent=target.textContent;
         target.parentElement.remove();
         liTarget.querySelector("button").setAttribute("aria-selected","true");
+        liTarget.querySelector("button").setAttribute("aria-checked","true");
         ulTarget.prepend(liTarget);
+        ulTarget.setAttribute("aria-activedescendant",liTarget.id);
         sortMedias(target.getAttribute("data-value"));
     }
     closeDropdown(ulTarget);
 }
+
+function initTri(){
+    document.getElementById("sortSelect").addEventListener("click",toggleDropdown);
+    document.querySelectorAll(".test-dropdown button").forEach(button=>{
+        button.addEventListener("click",optionSelected);
+    });
+}
+
+initTri();
 
 export{toggleDropdown, optionSelected};
