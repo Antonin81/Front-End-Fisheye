@@ -1,11 +1,17 @@
 function openDropdown(dropdown){
+    const button = document.getElementById("sortSelect");
     dropdown.classList.remove("hidden");
     dropdown.setAttribute("aria-hidden","false");
+    dropdown.children[0].children[0].focus();
+    button.setAttribute("tabindex","-1"); 
 }
 
 function closeDropdown(dropdown){
+    const button = document.getElementById("sortSelect");
     dropdown.classList.add("hidden");
     dropdown.setAttribute("aria-hidden","true");
+    dropdown.focus();
+    button.setAttribute("tabindex","0");
 }
 
 function toggleDropdown(){
