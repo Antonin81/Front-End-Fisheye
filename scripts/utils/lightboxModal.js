@@ -53,8 +53,8 @@ function closeLightboxModal(){
     document.getElementById("pictures").querySelector(`[data-order="${order}"]`).querySelector("a").focus();
 }
 
-function openLightboxModal(){
-    order = parseInt(event.target.parentElement.parentElement.getAttribute("data-order"));
+function openLightboxModal(e){
+    order = parseInt(e.target.parentElement.parentElement.getAttribute("data-order"));
     const lightbox = document.getElementById("lightbox_modal");
     const cross = document.querySelector(".lightbox-cross");
     lightbox.style.display="block";

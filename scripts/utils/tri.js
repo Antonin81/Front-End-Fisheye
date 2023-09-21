@@ -81,8 +81,8 @@ async function sortMedias(sortMode){
     
 }
 
-function optionSelected(){
-    let target = event.target;
+function optionSelected(e){
+    let target = e.target;
     let dropdownButton = document.getElementById("sortSelect");
     let liTarget = target.parentElement;
     let ulTarget = liTarget.parentElement;

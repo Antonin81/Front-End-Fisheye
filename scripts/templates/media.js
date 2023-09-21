@@ -16,14 +16,14 @@ function mediaTemplate(data) {
         pictureLink.setAttribute("title",title+", closeup view");
 
         if(image!=undefined){
-            pictureLink.addEventListener("click",()=>{openLightboxModal(mediaOrder);});
+            pictureLink.addEventListener("click",(e)=>{openLightboxModal(e, mediaOrder);});
             const pictureImg = document.createElement("img");
             pictureImg.setAttribute("src",picturePath);
             pictureImg.setAttribute("alt",title);
             pictureLink.appendChild(pictureImg);
             pictureCard.appendChild(pictureLink);
         } else {
-            pictureLink.addEventListener("click",()=>{openLightboxModal(mediaOrder);});
+            pictureLink.addEventListener("click",(e)=>{openLightboxModal(e,mediaOrder);});
             const pictureVideo = document.createElement("video");
             const videoSrc = document.createElement("source");
             videoSrc.setAttribute("src",videoPath);

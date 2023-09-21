@@ -60,9 +60,9 @@ function closeModal() {
     modal.setAttribute("aria-hidden","true");
 }
 
-function validateForm() {
+function validateForm(e) {
 
-    event.preventDefault();
+    e.preventDefault();
 
     const firstNameInput = document.getElementById("inputFirstname");
     const lastNameInput = document.getElementById("inputLastname");
