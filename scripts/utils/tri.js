@@ -32,8 +32,10 @@ async function sortMedias(sortMode){
     const photographerId = urlParams.get("id");
     const { photographer } = await getPhotographer(photographerId);
     const pictures = await getPictures(photographer.id);
+    const lightbox = document.querySelector(".lightbox-medias");
     let mediaOrder = 0;
     picturesSection.innerHTML="";
+    lightbox.innerHTML="";
     switch (sortMode) {
         case "title":
             pictures.sort((a,b)=>{
@@ -73,6 +75,7 @@ async function sortMedias(sortMode){
     }
     for (let picture of pictures){
         picturesSection.appendChild(mediaTemplate(picture).getPictureGridCardDOM(mediaOrder));
+        lightbox.appendChild(mediaTemplate(picture).getLightboxMediaDOM(mediaOrder));
         mediaOrder+=1;
     }
     
@@ -103,6 +106,7 @@ function initTri(){
     document.querySelectorAll(".test-dropdown button").forEach(button=>{
         button.addEventListener("click",optionSelected);
     });
+    sortMedias("title");
 }
 
 initTri();
