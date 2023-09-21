@@ -43,7 +43,7 @@ function validateForm() {
             lastName : lastName,
             email : email,
             message : message
-        }
+        };
 
         console.log(result);
 
@@ -84,14 +84,14 @@ function hideSuccessMessage(){
 }
 
 function reinitializeErrors(list){
-    for (inputError of list){
+    for (let inputError of list){
         inputError.setAttribute("aria-hidden","true");
         inputError.classList.add("hidden");
     }
 }
 
 function emptyInputs(list){
-    for (input of list){
+    for (let input of list){
         input.value="";
     }
 }
@@ -118,14 +118,16 @@ function initContact(){
     const closeCross = modal.querySelector("img");
     closeCross.addEventListener("keydown",(e)=>{
         if(e.code=="Enter"){
-            closeCross.click()
+            closeCross.click();
         }
-    })
+    });
     modal.addEventListener("keydown",(e)=>{
         if(e.code=="Escape"){
-            closeCross.click()
+            closeCross.click();
         }
-    })
+    });
 }
 
 initContact();
+
+export{displayModal, closeModal, validateForm};

@@ -1,3 +1,6 @@
+import { photographerTemplate } from "../templates/photographer";
+import { mediaTemplate } from "../templates/media";
+
 async function getPhotographer(id) {
 
     let photographer=null;
@@ -12,9 +15,9 @@ async function getPhotographer(id) {
                 photographer=dataPhotographer;
             }
         });
-    }) 
+    });
 
-    return ({photographer: photographer})
+    return ({photographer: photographer});
 }
 
 async function getPictures(id){
@@ -31,7 +34,7 @@ async function getPictures(id){
                 pictures.push(dataPicture);
             }
         });
-    }) 
+    }); 
 
     return pictures;
 }
@@ -62,7 +65,7 @@ async function displayData(photographer, pictures) {
 
 async function init() {
     const urlParams = new URL(document.location).searchParams;
-    const photographerId = urlParams.get('id');
+    const photographerId = urlParams.get("id");
     const { photographer } = await getPhotographer(photographerId);
     const pictures = await getPictures(photographer.id);
     displayData(photographer, pictures);

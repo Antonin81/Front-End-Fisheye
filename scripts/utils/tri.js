@@ -1,3 +1,5 @@
+export{toggleDropdown, optionSelected};
+
 function openDropdown(dropdown){
     dropdown.classList.remove("hidden");
     dropdown.setAttribute("aria-hidden","false");

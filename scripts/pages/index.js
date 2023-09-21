@@ -1,4 +1,6 @@
-    async function getPhotographers() {
+import { photographerTemplate } from "../templates/photographer";
+
+async function getPhotographers() {
 
         let photographers=[];
 
@@ -8,10 +10,10 @@
         })
         .then((data)=>{
             photographers.push(data.photographers);
-        }) 
+        }); 
 
         return ({
-            photographers: photographers})
+            photographers: photographers});
     }
 
     async function displayData(photographers) {
