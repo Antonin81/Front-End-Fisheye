@@ -193,6 +193,8 @@ form textarea{
     height: 170px;
 }
 
+/* ------------ Media Article ------------- */
+
 .picture {
     min-height: 351px;
     width: 350px;
@@ -233,6 +235,7 @@ form textarea{
 
 .picture i{
     margin-left: 5px;
+    cursor: pointer;
 }
 
 .photograph-pictures{
@@ -253,6 +256,8 @@ form textarea{
     overflow: hidden;
 }
 
+/* --------------- Bottom Section ---------------- */
+
 .bottom-section{
     position: fixed;
     bottom: 0;
@@ -268,12 +273,19 @@ form textarea{
     align-items: center;
 }
 
+.bottom-section span{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
 .bottom-section p{
     margin: 0;
 }
 
 .bottom-section i{
-    margin-left: 5px;
+    line-height: 1;
+    margin: 0;
 }
 
 /* Section de tri (select et label) */

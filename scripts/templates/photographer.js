@@ -1,6 +1,7 @@
 function photographerTemplate(data) {
     const { id, name, portrait, price, country, city, tagline } = data;
     const picture = `assets/photographers/${portrait}`;
+    const likeButtons = document.querySelectorAll(".like-button");
 
     function getUserCardDOM() {
 
@@ -72,7 +73,10 @@ function photographerTemplate(data) {
         const bottomSection = document.createElement("div");
         bottomSection.classList.add("bottom-section");
 
-        const totalLikes = document.createElement("p");
+        const totalLikesSpan = document.createElement("span");
+
+        const totalLikes = document.createElement('p');
+        totalLikes.classList.add("total-likes");
         totalLikes.textContent=likesCount;
 
         const totalLikesIcon = document.createElement("i");
@@ -83,15 +87,30 @@ function photographerTemplate(data) {
         const photographerPrice = document.createElement("p");
         photographerPrice.textContent = price+"€ / jour";
 
-        totalLikes.appendChild(totalLikesIcon);
+        totalLikesSpan.appendChild(totalLikes);
+        totalLikesSpan.appendChild(totalLikesIcon);
 
-        bottomSection.appendChild(totalLikes);
+        bottomSection.appendChild(totalLikesSpan);
         bottomSection.appendChild(photographerPrice);
 
         return bottomSection;
     }
 
-    return { name, picture, getUserCardDOM, getUserDescDOM, getBottomSectionDOM };
+    for (let likeButton of likeButtons){
+        likeButton.addEventListener("click",()=>{
+            if(likeButton.getAttribute("data-liked")=="false"){
+                likeButton.setAttribute("data-liked","true");
+                likeButton.previousSibling.textContent++;
+                document.querySelector(".total-likes").textContent++;
+            } else {
+                likeButton.setAttribute("data-liked","false");
+                likeButton.previousSibling.textContent--;
+                document.querySelector(".total-likes").textContent--;
+            }
+        })
+    }
+
+    return { name, picture, getUserCardDOM, getUserDescDOM, getBottomSectionDOM }
 }
 
 export {photographerTemplate};

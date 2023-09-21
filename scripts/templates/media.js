@@ -43,6 +43,8 @@ function mediaTemplate(data) {
         pictureLikesIcon.classList.add("fa-solid");
         pictureLikesIcon.classList.add("fa-heart");
         pictureLikesIcon.setAttribute("aria-label","likes");
+        pictureLikesIcon.classList.add("like-button");
+        pictureLikesIcon.setAttribute("data-liked","false");
         pictureLikes.appendChild(pictureLikesIcon);
 
         pictureFooter.appendChild(pictureTitle);
