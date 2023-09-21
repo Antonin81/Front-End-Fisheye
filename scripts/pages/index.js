@@ -12,8 +12,7 @@ async function getPhotographers() {
             photographers.push(data.photographers);
         }); 
 
-        return ({
-            photographers: photographers});
+        return ({photographers: photographers});
     }
 
     async function displayData(photographers) {

@@ -1,4 +1,17 @@
-export {openLightboxModal, closeLightboxModal, previousMedia, nextMedia};
+function displayMedia(order){
+    const lightbox = document.getElementById("lightbox_modal");
+    lightbox.querySelector(`[data-order="${order}"]`).style.display="block";
+}
+
+function setOrderArrow(order){
+    const leftArrow = document.querySelector(".lightbox-arrow-left");
+    const rightArrow = document.querySelector(".lightbox-arrow-right");
+    const cross = document.querySelector(".lightbox-cross");
+
+    leftArrow.setAttribute("onclick",`previousMedia(${order})`);
+    rightArrow.setAttribute("onclick",`nextMedia(${order})`);
+    cross.setAttribute("onclick",`closeLightboxModal(${order})`);
+}
 
 function openLightboxModal(order){
     event.preventDefault();
@@ -19,11 +32,6 @@ function openLightboxModal(order){
     setOrderArrow(order);
 }
 
-function displayMedia(order){
-    const lightbox = document.getElementById("lightbox_modal");
-    lightbox.querySelector(`[data-order="${order}"]`).style.display="block";
-}
-
 function closeLightboxModal(order){
     const lightbox = document.getElementById("lightbox_modal");
     lightbox.style.display="none";
@@ -31,16 +39,6 @@ function closeLightboxModal(order){
     document.querySelector("main").setAttribute("aria-hidden","false");
     lightbox.setAttribute("aria-hidden","true");
     document.getElementById("pictures").querySelector(`[data-order="${order}"]`).querySelector("a").focus();
-}
-
-function setOrderArrow(order){
-    const leftArrow = document.querySelector(".lightbox-arrow-left");
-    const rightArrow = document.querySelector(".lightbox-arrow-right");
-    const cross = document.querySelector(".lightbox-cross");
-
-    leftArrow.setAttribute("onclick",`previousMedia(${order})`);
-    rightArrow.setAttribute("onclick",`nextMedia(${order})`);
-    cross.setAttribute("onclick",`closeLightboxModal(${order})`);
 }
 
 function previousMedia(order){
@@ -116,3 +114,5 @@ function initLightbox(){
 }
 
 initLightbox();
+
+export {openLightboxModal, closeLightboxModal, previousMedia, nextMedia};

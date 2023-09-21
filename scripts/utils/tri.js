@@ -1,4 +1,5 @@
-export{toggleDropdown, optionSelected};
+import {getPhotographer, getPictures} from "../pages/photographer";
+import { mediaTemplate } from "../templates/media";
 
 function openDropdown(dropdown){
     const button = document.getElementById("sortSelect");
@@ -25,6 +26,58 @@ function toggleDropdown(){
     }
 }
 
+async function sortMedias(sortMode){
+    const urlParams = new URL(document.location).searchParams;
+    const picturesSection = document.getElementById("pictures");
+    const photographerId = urlParams.get("id");
+    const { photographer } = await getPhotographer(photographerId);
+    const pictures = await getPictures(photographer.id);
+    let mediaOrder = 0;
+    picturesSection.innerHTML="";
+    switch (sortMode) {
+        case "title":
+            pictures.sort((a,b)=>{
+                if(a.title < b.title){
+                    return -1;
+                }
+                if(a.title > b.title){
+                    return 1;
+                }
+                return 0;
+            });
+            break;
+        case "popularity":
+            pictures.sort((a,b)=>{
+                if(a.likes < b.likes){
+                    return 1;
+                }
+                if(a.likes > b.likes){
+                    return -1;
+                }
+                return 0;
+            });
+            break;
+        case "date":
+            pictures.sort((a,b)=>{
+                if(a.date < b.date){
+                    return 1;
+                }
+                if(a.date > b.date){
+                    return -1;
+                }
+                return 0;
+            });
+            break;
+        default:
+            break;
+    }
+    for (let picture of pictures){
+        picturesSection.appendChild(mediaTemplate(picture).getPictureGridCardDOM(mediaOrder));
+        mediaOrder+=1;
+    }
+    
+}
+
 function optionSelected(){
     let target = event.target;
     let dropdownButton = document.getElementById("sortSelect");
@@ -42,54 +95,4 @@ function optionSelected(){
     closeDropdown(ulTarget);
 }
 
-async function sortMedias(sortMode){
-    const urlParams = new URL(document.location).searchParams;
-    const picturesSection = document.getElementById("pictures");
-    const photographerId = urlParams.get('id');
-    const { photographer } = await getPhotographer(photographerId);
-    const pictures = await getPictures(photographer.id);
-    let mediaOrder = 0;
-    picturesSection.innerHTML="";
-    switch (sortMode) {
-        case "title":
-            pictures.sort((a,b)=>{
-                if(a.title < b.title){
-                    return -1
-                }
-                if(a.title > b.title){
-                    return 1
-                }
-                return 0
-            })
-            break;
-        case "popularity":
-            pictures.sort((a,b)=>{
-                if(a.likes < b.likes){
-                    return 1
-                }
-                if(a.likes > b.likes){
-                    return -1
-                }
-                return 0
-            })
-            break;
-        case "date":
-            pictures.sort((a,b)=>{
-                if(a.date < b.date){
-                    return 1
-                }
-                if(a.date > b.date){
-                    return -1
-                }
-                return 0
-            })
-            break;
-        default:
-            break;
-    }
-    for (let picture of pictures){
-        picturesSection.appendChild(mediaTemplate(picture).getPictureGridCardDOM(mediaOrder));
-        mediaOrder+=1;
-    }
-    
-}
+export{toggleDropdown, optionSelected};

@@ -1,3 +1,45 @@
+function logSuccessMessage(){
+    const successMessage=document.getElementById("successMessage");
+    successMessage.setAttribute("aria-hidden","false");
+    successMessage.classList.remove("hidden");
+}
+
+function hideSuccessMessage(){
+    const successMessage=document.getElementById("successMessage");
+    successMessage.setAttribute("aria-hidden","true");
+    successMessage.classList.add("hidden");
+}
+
+function reinitializeErrors(list){
+    for (let inputError of list){
+        inputError.setAttribute("aria-hidden","true");
+        inputError.classList.add("hidden");
+    }
+}
+
+function emptyInputs(list){
+    for (let input of list){
+        input.value="";
+    }
+}
+
+function validateFirstname(firstName){
+    return firstName!="";
+}
+
+function validateLastName(lastName){
+    return lastName!="";
+}
+
+function validateEmail(email){
+    const regexEmail = new RegExp("^[a-z0-9._-]+@[a-z0-9-_]+\\.[a-z]{2,}$");
+    return regexEmail.test(email);
+}
+
+function validateMessage(message){
+    return message!="";
+}
+
 function displayModal() {
     const modal = document.getElementById("contact_modal");
     const closeCross = modal.querySelector("img");
@@ -69,48 +111,6 @@ function validateForm() {
             messageInputError.classList.remove("hidden");
         }
     }
-}
-
-function logSuccessMessage(){
-    const successMessage=document.getElementById("successMessage");
-    successMessage.setAttribute("aria-hidden","false");
-    successMessage.classList.remove("hidden");
-}
-
-function hideSuccessMessage(){
-    const successMessage=document.getElementById("successMessage");
-    successMessage.setAttribute("aria-hidden","true");
-    successMessage.classList.add("hidden");
-}
-
-function reinitializeErrors(list){
-    for (let inputError of list){
-        inputError.setAttribute("aria-hidden","true");
-        inputError.classList.add("hidden");
-    }
-}
-
-function emptyInputs(list){
-    for (let input of list){
-        input.value="";
-    }
-}
-
-function validateFirstname(firstName){
-    return firstName!="";
-}
-
-function validateLastName(lastName){
-    return lastName!="";
-}
-
-function validateEmail(email){
-    const regexEmail = new RegExp("^[a-z0-9._-]+@[a-z0-9-_]+\\.[a-z]{2,}$");
-    return regexEmail.test(email);
-}
-
-function validateMessage(message){
-    return message!="";
 }
 
 function initContact(){

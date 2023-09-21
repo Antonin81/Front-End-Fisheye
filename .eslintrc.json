@@ -26,6 +26,21 @@
         "no-duplicate-imports": "error",
         "no-unreachable": "error",
         "no-unused-vars": "error",
-        "no-use-before-define":"error"
+        "no-use-before-define":"error",
+        "camelcase": "error",
+        "no-alert": "error",
+        "no-empty": "error",
+        "no-empty-function": "error",
+        "no-var": "error",
+        "brace-style" : [ 
+            "error", 
+            "1tbs", 
+            {
+                "allowSingleLine":true
+            } 
+        ],
+        "no-multi-spaces": "error",
+        "object-curly-newline": "error",
+        "semi-spacing": ["error", {"before": false, "after": false}]
     }
 }
