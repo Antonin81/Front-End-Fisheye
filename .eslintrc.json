@@ -25,6 +25,7 @@
         "no-dupe-else-if" : "error",
         "no-duplicate-imports": "error",
         "no-unreachable": "error",
+        "no-use-before-define": "error",
         "no-unused-vars": "error",
         "camelcase": "error",
         "no-alert": "error",

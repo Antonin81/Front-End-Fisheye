@@ -73,13 +73,13 @@ function photographerTemplate(data) {
         const bottomSection = document.createElement("div");
         bottomSection.classList.add("bottom-section");
 
-        const totalLikesSpan = document.createElement("span");
+        const totalLikesSpan = document.createElement("p");
 
-        const totalLikes = document.createElement('p');
+        const totalLikes = document.createElement("span");
         totalLikes.classList.add("total-likes");
         totalLikes.textContent=likesCount;
 
-        const totalLikesIcon = document.createElement("i");
+        const totalLikesIcon = document.createElement("em");
         totalLikesIcon.classList.add("fa-solid");
         totalLikesIcon.classList.add("fa-heart");
         totalLikesIcon.setAttribute("aria-label","likes");
@@ -107,10 +107,10 @@ function photographerTemplate(data) {
                 likeButton.previousSibling.textContent--;
                 document.querySelector(".total-likes").textContent--;
             }
-        })
+        });
     }
 
-    return { name, picture, getUserCardDOM, getUserDescDOM, getBottomSectionDOM }
+    return { name, picture, getUserCardDOM, getUserDescDOM, getBottomSectionDOM };
 }
 
 export {photographerTemplate};

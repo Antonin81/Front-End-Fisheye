@@ -39,7 +39,7 @@ function mediaTemplate(data) {
         const pictureLikes = document.createElement("p");
         pictureLikes.textContent = likes;
 
-        const pictureLikesIcon = document.createElement("i");
+        const pictureLikesIcon = document.createElement("em");
         pictureLikesIcon.classList.add("fa-solid");
         pictureLikesIcon.classList.add("fa-heart");
         pictureLikesIcon.setAttribute("aria-label","likes");
