@@ -1,37 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" >
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
+    <header aria-hidden="false">
       <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Fisheye Home Page"/></a>
     </header>
-    <main id="main">
+    <main id="main" aria-hidden="false">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" onclick="displayModal()" aria-label="Contact Me">Contactez-moi</button>
       </div>
+      <section class="photograph-pictures">
+        <div id="tri">
+          <label for="sortSelect" id="tri-label">Trier par : </label>
+          <div class="select-section">
+            <button onclick="toggleDropdown()" id="sortSelect" role="button" aria-haspopup="listbox" aria-expanded="false">Titre</button>
+            <ul class="test-dropdown hidden" role="listbox" aria-labelledby="tri-label" aria-activedescendant="true" aria-hidden="true">
+              <li role="option"><button onclick="optionSelected()" data-value="title" aria-selected="true" aria-label="sort by title">Titre</button></li>
+              <li role="option"><button onclick="optionSelected()" data-value="popularity" aria-selected="false" aria-label="sort by popularity">Popularité</button></li>
+              <li role="option"><button onclick="optionSelected()" data-value="date" aria-selected="false" aria-label="sort by date">Date</button></li>
+            </ul>
+          </div>
+          
+        </div>
+        <div class="pictures" id="pictures">
+
+        </div>
+      </section>
+      
     </main>
-    <div id="contact_modal">
+    <div id="contact_modal" role="dialog" aria-labelledby="contact_modal-h2" aria-hidden="true">
 			<div class="modal">
 				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <h2 aria-label="Contact Me" id="contact_modal-h2">Contactez-moi</h2>
+          <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="Close Contact form" tabindex="0" />
         </header>
-				<form>
+				<form onsubmit="validateForm();">
 					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
+						<label for="inputFirstname" id="inputFirstnameLabel" >Prénom</label>
+						<input name="inputFirstname" id="inputFirstname" aria-labelledby="inputFirstnameLabel" type="text"/>
+            <p id="inputFirstnameError" class="hidden" aria-hidden="true">Veuillez entrer un prénom.</p>
+            <label for="inputLastname" id="inputLastnameLabel">Nom</label>
+						<input name="inputLastname" id="inputLastname" aria-labelledby="inputLastnameLabel" type="text"/>
+            <p id="inputLastnameError" class="hidden" aria-hidden="true">Veuillez entrer un nom.</p>
+            <label for="inputEmail" id="inputEmailLabel">Email</label>
+						<input name="inputEmail" id="inputEmail" aria-labelledby="inputEmailLabel" type="text"/>
+            <p id="inputEmailError" class="hidden" aria-hidden="true">Veuillez entrer un email valide.</p>
+            <label for="inputMessage" id="inputMessageLabel">Message</label>
+						<textarea name="inputMessage" id="inputMessage" aria-labelledby="inputMessageLabel" type="text"></textarea>
+            <p id="inputMessageError" class="hidden" aria-hidden="true">Veuillez entrer un message.</p>
+          </div>
+          <p id="successMessage" class="hidden" aria-hidden="true">L'envoi a bien été effectué !</p>
+          <button class="contact_button" type="submit" aria-label="Send">Envoyer</button>
 				</form>
+			</div>
+		</div>
+    <div id="lightbox_modal" role="dialog" aria-hidden="true" aria-label="image closeup view">
+			<div class="lightbox">
+        <img src="assets/icons/closeLightbox.svg" aria-label="Close dialog" tabindex="0" class="lightbox-cross" />
+				<div class="lightbox-content">
+          <div class="lightbox-arrows-and-media">
+
+            <div role="button" aria-label="Previous image" class="lightbox-arrow lightbox-arrow-left" tabindex="0">
+              <img src="assets/icons/leftArrow.svg" alt="left arrow">
+            </div>
+
+            <ul class="lightbox-medias">
+
+            </ul>
+
+            <div role="button" aria-label="Next image" class="lightbox-arrow lightbox-arrow-right" tabindex="0">
+              <img src="assets/icons/rightArrow.svg" alt="right arrow">
+            </div>
+
+          </div>
+        </div>
 			</div>
 		</div>
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/utils/contactForm.js"></script>
+    <script src="scripts/utils/lightboxModal.js"></script>
+    <script src="scripts/templates/photographer.js"></script>
+    <script src="scripts/templates/media.js"></script>
+    <script src="scripts/utils/tri.js"></script>
   </body>
 </html>
