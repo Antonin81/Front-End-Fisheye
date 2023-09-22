@@ -1,5 +1,6 @@
 import {getPhotographer, getPictures} from "../pages/photographer.js";
 import { mediaTemplate } from "../templates/media.js";
+import { photographerTemplate } from "../templates/photographer.js";
 
 function openDropdown(dropdown){
     const button = document.getElementById("sortSelect");
@@ -78,6 +79,7 @@ async function sortMedias(sortMode){
         lightbox.appendChild(mediaTemplate(picture).getLightboxMediaDOM(mediaOrder));
         mediaOrder+=1;
     }
+    photographerTemplate({}).eventLikeButtons();
     
 }
 

@@ -96,21 +96,23 @@ function photographerTemplate(data) {
         return bottomSection;
     }
 
-    for (let likeButton of likeButtons){
-        likeButton.addEventListener("click",()=>{
-            if(likeButton.getAttribute("data-liked")=="false"){
-                likeButton.setAttribute("data-liked","true");
-                likeButton.previousSibling.textContent++;
-                document.querySelector(".total-likes").textContent++;
-            } else {
-                likeButton.setAttribute("data-liked","false");
-                likeButton.previousSibling.textContent--;
-                document.querySelector(".total-likes").textContent--;
-            }
-        });
+    function eventLikeButtons(){
+        for (let likeButton of likeButtons){
+            likeButton.addEventListener("click",()=>{
+                if(likeButton.getAttribute("data-liked")=="false"){
+                    likeButton.setAttribute("data-liked","true");
+                    likeButton.previousSibling.textContent++;
+                    document.querySelector(".total-likes").textContent++;
+                } else {
+                    likeButton.setAttribute("data-liked","false");
+                    likeButton.previousSibling.textContent--;
+                    document.querySelector(".total-likes").textContent--;
+                }
+            });
+        }
     }
 
-    return { name, picture, getUserCardDOM, getUserDescDOM, getBottomSectionDOM };
+    return { name, picture, getUserCardDOM, getUserDescDOM, getBottomSectionDOM, eventLikeButtons };
 }
 
 export {photographerTemplate};

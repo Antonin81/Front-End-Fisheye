@@ -1,4 +1,5 @@
 import { photographerTemplate } from "../templates/photographer.js";
+import { mediaTemplate } from "../templates/media.js";
 
 async function getPhotographer(id) {
 
@@ -47,6 +48,14 @@ async function displayData(photographer, pictures) {
     lightbox.setAttribute("data-max-order",pictures.length);
 
     let likesCount = 0;
+    let mediaOrder = 0;
+    const picturesSection = document.getElementById("pictures");
+    for (let picture of pictures){
+        picturesSection.appendChild(mediaTemplate(picture).getPictureGridCardDOM(mediaOrder));
+        lightbox.appendChild(mediaTemplate(picture).getLightboxMediaDOM(mediaOrder));
+        mediaOrder+=1;
+    }
+
     pictures.forEach(picture=>{
         likesCount += picture.likes;
     });
