@@ -233,7 +233,7 @@ form textarea{
     font-weight: 400;
 }
 
-.picture i{
+.picture em{
     margin-left: 5px;
     cursor: pointer;
 }
