@@ -1,3 +1,6 @@
+import {getPhotographer, getPictures} from "../pages/photographer.js";
+import { mediaTemplate } from "../templates/media.js";
+
 function openDropdown(dropdown){
     const button = document.getElementById("sortSelect");
     dropdown.classList.remove("hidden");
@@ -23,71 +26,89 @@ function toggleDropdown(){
     }
 }
 
-function optionSelected(){
-    let target = event.target;
-    let dropdownButton = document.getElementById("sortSelect");
-    let liTarget = target.parentElement;
-    let ulTarget = liTarget.parentElement;
-    if(target.getAttribute("aria-selected")=="false"){
-        ulTarget.children[0].querySelector("button").setAttribute("aria-selected","false");
-
-        dropdownButton.textContent=target.textContent;
-        target.parentElement.remove();
-        liTarget.querySelector("button").setAttribute("aria-selected","true");
-        ulTarget.prepend(liTarget);
-        sortMedias(target.getAttribute("data-value"));
-    }
-    closeDropdown(ulTarget);
-}
-
 async function sortMedias(sortMode){
     const urlParams = new URL(document.location).searchParams;
     const picturesSection = document.getElementById("pictures");
-    const photographerId = urlParams.get('id');
+    const photographerId = urlParams.get("id");
     const { photographer } = await getPhotographer(photographerId);
     const pictures = await getPictures(photographer.id);
+    const lightbox = document.querySelector(".lightbox-medias");
     let mediaOrder = 0;
     picturesSection.innerHTML="";
+    lightbox.innerHTML="";
     switch (sortMode) {
         case "title":
             pictures.sort((a,b)=>{
                 if(a.title < b.title){
-                    return -1
+                    return -1;
                 }
                 if(a.title > b.title){
-                    return 1
+                    return 1;
                 }
-                return 0
-            })
+                return 0;
+            });
             break;
         case "popularity":
             pictures.sort((a,b)=>{
                 if(a.likes < b.likes){
-                    return 1
+                    return 1;
                 }
                 if(a.likes > b.likes){
-                    return -1
+                    return -1;
                 }
-                return 0
-            })
+                return 0;
+            });
             break;
         case "date":
             pictures.sort((a,b)=>{
                 if(a.date < b.date){
-                    return 1
+                    return 1;
                 }
                 if(a.date > b.date){
-                    return -1
+                    return -1;
                 }
-                return 0
-            })
+                return 0;
+            });
             break;
         default:
             break;
     }
     for (let picture of pictures){
         picturesSection.appendChild(mediaTemplate(picture).getPictureGridCardDOM(mediaOrder));
+        lightbox.appendChild(mediaTemplate(picture).getLightboxMediaDOM(mediaOrder));
         mediaOrder+=1;
     }
     
 }
+
+function optionSelected(e){
+    let target = e.target;
+    let dropdownButton = document.getElementById("sortSelect");
+    let liTarget = target.parentElement;
+    let ulTarget = liTarget.parentElement;
+    if(target.getAttribute("aria-selected")=="false"){
+        ulTarget.children[0].querySelector("button").setAttribute("aria-selected","false");
+        ulTarget.children[0].querySelector("button").setAttribute("aria-checked","false");
+
+        dropdownButton.textContent=target.textContent;
+        target.parentElement.remove();
+        liTarget.querySelector("button").setAttribute("aria-selected","true");
+        liTarget.querySelector("button").setAttribute("aria-checked","true");
+        ulTarget.prepend(liTarget);
+        ulTarget.setAttribute("aria-activedescendant",liTarget.id);
+        sortMedias(target.getAttribute("data-value"));
+    }
+    closeDropdown(ulTarget);
+}
+
+function initTri(){
+    document.getElementById("sortSelect").addEventListener("click",toggleDropdown);
+    document.querySelectorAll(".test-dropdown button").forEach(button=>{
+        button.addEventListener("click",optionSelected);
+    });
+    sortMedias("title");
+}
+
+initTri();
+
+export{toggleDropdown, optionSelected};

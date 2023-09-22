@@ -40,7 +40,7 @@
 
 .lightbox-arrow{
     height: 96px;
-    aspect-ratio: 1;
+    aspect-ratio: 1/1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -273,13 +273,10 @@ form textarea{
     align-items: center;
 }
 
-.bottom-section span{
+.bottom-section p{
     display: flex;
     gap: 5px;
     align-items: center;
-}
-
-.bottom-section p{
     margin: 0;
 }
 

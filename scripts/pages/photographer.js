@@ -1,3 +1,5 @@
+import { photographerTemplate } from "../templates/photographer.js";
+
 async function getPhotographer(id) {
 
     let photographer=null;
@@ -12,9 +14,9 @@ async function getPhotographer(id) {
                 photographer=dataPhotographer;
             }
         });
-    }) 
+    });
 
-    return ({photographer: photographer})
+    return ({photographer: photographer});
 }
 
 async function getPictures(id){
@@ -31,7 +33,7 @@ async function getPictures(id){
                 pictures.push(dataPicture);
             }
         });
-    }) 
+    }); 
 
     return pictures;
 }
@@ -39,20 +41,14 @@ async function getPictures(id){
 async function displayData(photographer, pictures) {
     const main = document.getElementById("main");
     const header = main.querySelector(".photograph-header");
-    const picturesSection = document.getElementById("pictures");
     const { headerFirstPart, img } = photographerTemplate(photographer).getUserDescDOM();
-    const lightboxMedias = document.querySelector(".lightbox-medias");
     const lightbox = document.getElementById("lightbox_modal");
 
     lightbox.setAttribute("data-max-order",pictures.length);
 
     let likesCount = 0;
-    let mediaOrder = 0;
     pictures.forEach(picture=>{
         likesCount += picture.likes;
-        picturesSection.appendChild(mediaTemplate(picture).getPictureGridCardDOM(mediaOrder));
-        lightboxMedias.appendChild(mediaTemplate(picture).getLightboxMediaDOM(mediaOrder));
-        mediaOrder+=1;
     });
     const bottomSection = photographerTemplate(photographer).getBottomSectionDOM(likesCount);
     header.prepend(headerFirstPart);
@@ -62,7 +58,7 @@ async function displayData(photographer, pictures) {
 
 async function init() {
     const urlParams = new URL(document.location).searchParams;
-    const photographerId = urlParams.get('id');
+    const photographerId = urlParams.get("id");
     const { photographer } = await getPhotographer(photographerId);
     const pictures = await getPictures(photographer.id);
     displayData(photographer, pictures);
@@ -72,3 +68,5 @@ async function init() {
 }
 
 init();
+
+export {getPhotographer, getPictures};
