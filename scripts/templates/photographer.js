@@ -102,10 +102,14 @@ function photographerTemplate(data) {
                 if(likeButton.getAttribute("data-liked")=="false"){
                     likeButton.setAttribute("data-liked","true");
                     likeButton.previousSibling.textContent++;
+                    likeButton.classList.remove("fa-regular");
+                    likeButton.classList.add("fa-solid");
                     document.querySelector(".total-likes").textContent++;
                 } else {
                     likeButton.setAttribute("data-liked","false");
                     likeButton.previousSibling.textContent--;
+                    likeButton.classList.remove("fa-solid");
+                    likeButton.classList.add("fa-regular");
                     document.querySelector(".total-likes").textContent--;
                 }
             });

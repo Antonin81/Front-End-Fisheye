@@ -40,7 +40,7 @@ function mediaTemplate(data) {
         pictureLikes.textContent = likes;
 
         const pictureLikesIcon = document.createElement("em");
-        pictureLikesIcon.classList.add("fa-solid");
+        pictureLikesIcon.classList.add("fa-regular");
         pictureLikesIcon.classList.add("fa-heart");
         pictureLikesIcon.setAttribute("aria-label","likes");
         pictureLikesIcon.classList.add("like-button");
