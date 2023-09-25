@@ -55,10 +55,20 @@ async function sortMedias(sortMode){
             break;
         case "popularity":
             pictures.sort((a,b)=>{
-                if(a.likes < b.likes){
+                let aLikes = a.likes;
+                let bLikes = b.likes;
+                if(likedList.includes(a.id.toString())){
+                    console.log("a");
+                    aLikes++;
+                }
+                if(likedList.includes(b.id.toString())){
+                    console.log("b");
+                    bLikes++;
+                }
+                if(aLikes < bLikes){
                     return 1;
                 }
-                if(a.likes > b.likes){
+                if(aLikes > bLikes){
                     return -1;
                 }
                 return 0;
