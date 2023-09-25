@@ -2,7 +2,7 @@ import { openLightboxModal } from "../utils/lightboxModal.js";
 
 function mediaTemplate(data) {
 
-    const { photographerId, title, image, video, likes } = data;
+    const { id, photographerId, title, image, video, likes } = data;
     const picturePath = `assets/Sample_Photos/${photographerId}/${image}`;
     const videoPath = `assets/Sample_Photos/${photographerId}/${video}`;
  
@@ -45,6 +45,7 @@ function mediaTemplate(data) {
         pictureLikesIcon.setAttribute("aria-label","likes");
         pictureLikesIcon.classList.add("like-button");
         pictureLikesIcon.setAttribute("data-liked","false");
+        pictureLikesIcon.setAttribute("data-image",id);
         pictureLikes.appendChild(pictureLikesIcon);
 
         pictureFooter.appendChild(pictureTitle);

@@ -34,7 +34,11 @@ async function sortMedias(sortMode){
     const { photographer } = await getPhotographer(photographerId);
     const pictures = await getPictures(photographer.id);
     const lightbox = document.querySelector(".lightbox-medias");
+    const likedList = [];
     let mediaOrder = 0;
+    document.querySelectorAll("[data-liked=true]").forEach(liked => {
+        likedList.push(liked.getAttribute("data-image"));
+    });
     picturesSection.innerHTML="";
     lightbox.innerHTML="";
     switch (sortMode) {
@@ -75,8 +79,17 @@ async function sortMedias(sortMode){
             break;
     }
     for (let picture of pictures){
-        picturesSection.appendChild(mediaTemplate(picture).getPictureGridCardDOM(mediaOrder));
+        const pictureCard = mediaTemplate(picture).getPictureGridCardDOM(mediaOrder);
+        const pictureLikeButton = pictureCard.querySelector("em");
+        if(likedList.includes(pictureLikeButton.getAttribute("data-image"))){
+            pictureLikeButton.setAttribute("data-liked",true);
+            pictureLikeButton.classList.remove("fa-regular");
+            pictureLikeButton.classList.add("fa-solid");
+            pictureLikeButton.previousSibling.textContent++;
+        }
+        picturesSection.appendChild(pictureCard);
         lightbox.appendChild(mediaTemplate(picture).getLightboxMediaDOM(mediaOrder));
+        
         mediaOrder+=1;
     }
     photographerTemplate({}).eventLikeButtons();
