@@ -6,7 +6,6 @@ function displayMedia(){
 }
 
 function previousMedia(){
-    console.log("previous a été lancée");
     const lightbox = document.getElementById("lightbox_modal");
     const maxOrder = lightbox.getAttribute("data-max-order");
 
@@ -54,7 +53,7 @@ function closeLightboxModal(){
 }
 
 function openLightboxModal(e){
-    order = parseInt(e.target.parentElement.parentElement.getAttribute("data-order"));
+    order = parseInt(e.target.parentElement.getAttribute("data-order"));
     const lightbox = document.getElementById("lightbox_modal");
     const cross = document.querySelector(".lightbox-cross");
     lightbox.style.display="block";
@@ -83,16 +82,19 @@ function initLightbox(){
 
     leftArrow.addEventListener("keydown",(e)=>{
         if(e.code=="Enter"){
+            console.log(e.code);
             leftArrow.click();
         }
     });
     rightArrow.addEventListener("keydown",(e)=>{
         if(e.code=="Enter"){
+            console.log(e.code);
             rightArrow.click();
         }
     });
-    cross.addEventListener("keydown",(e)=>{
+    cross.addEventListener("keypress",(e)=>{
         if(e.code=="Enter"){
+            console.log(e.code);
             cross.click();
         }
     });
@@ -111,4 +113,4 @@ function initLightbox(){
 
 initLightbox();
 
-export {openLightboxModal, closeLightboxModal, previousMedia, nextMedia};
+export {openLightboxModal, closeLightboxModal, previousMedia, nextMedia, order};

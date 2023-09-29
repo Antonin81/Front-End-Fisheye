@@ -46,6 +46,7 @@ function mediaTemplate(data) {
         pictureLikesIcon.classList.add("like-button");
         pictureLikesIcon.setAttribute("data-liked","false");
         pictureLikesIcon.setAttribute("data-image",id);
+        pictureLikesIcon.setAttribute("tabindex","0");
         pictureLikes.appendChild(pictureLikesIcon);
 
         pictureFooter.appendChild(pictureTitle);

@@ -58,6 +58,7 @@ function closeModal() {
     document.querySelector("header").setAttribute("aria-hidden","false");
     document.querySelector("main").setAttribute("aria-hidden","false");
     modal.setAttribute("aria-hidden","true");
+    document.querySelector(".contact_modal_button").focus();
 }
 
 function validateForm(e) {
@@ -91,6 +92,7 @@ function validateForm(e) {
 
         emptyInputs([firstNameInput, lastNameInput, emailInput, messageInput]);
         logSuccessMessage();
+        document.querySelector(".close-contact-modal").focus();
 
     } else {
         console.log("Invalid !");
@@ -116,7 +118,7 @@ function validateForm(e) {
 function initContact(){
     const modal = document.getElementById("contact_modal");
     const closeCross = modal.querySelector("img");
-    closeCross.addEventListener("keydown",(e)=>{
+    closeCross.addEventListener("keypress",(e)=>{
         if(e.code=="Enter"){
             closeCross.click();
         }

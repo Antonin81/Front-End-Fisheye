@@ -113,6 +113,11 @@ function photographerTemplate(data) {
                     document.querySelector(".total-likes").textContent--;
                 }
             });
+            likeButton.addEventListener("keypress",(e)=>{
+                if(e.code == "Enter"){
+                    likeButton.click();
+                }
+            });
         }
     }
 

@@ -207,6 +207,7 @@ form textarea{
     object-position: center;
     overflow: hidden;
     width: 100%;
+    pointer-events: none;
 }
 
 .picture div{
