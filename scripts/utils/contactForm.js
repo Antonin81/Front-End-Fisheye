@@ -1,15 +1,18 @@
+//Displays the success message in the contact modal
 function logSuccessMessage(){
     const successMessage=document.getElementById("successMessage");
     successMessage.setAttribute("aria-hidden","false");
     successMessage.style.display="block";
 }
 
+//Hides the success message in the contact modal
 function hideSuccessMessage(){
     const successMessage=document.getElementById("successMessage");
     successMessage.setAttribute("aria-hidden","true");
     successMessage.style.display="none";
 }
 
+//Reinitializes all the error messages in the contact modal
 function reinitializeErrors(list){
     for (let inputError of list){
         inputError.setAttribute("aria-hidden","true");
@@ -17,29 +20,35 @@ function reinitializeErrors(list){
     }
 }
 
+//Empties all the inputs in the contact modal
 function emptyInputs(list){
     for (let input of list){
         input.value="";
     }
 }
 
+//Tests the given firstname 
 function validateFirstname(firstName){
     return firstName!="";
 }
 
+//Tests the given lastname 
 function validateLastName(lastName){
     return lastName!="";
 }
 
+//Tests the given email 
 function validateEmail(email){
     const regexEmail = new RegExp("^[a-z0-9._-]+@[a-z0-9-_]+\\.[a-z]{2,}$");
     return regexEmail.test(email);
 }
 
+//Tests the given message 
 function validateMessage(message){
     return message!="";
 }
 
+//Displays the contact modal
 function displayModal() {
     const modal = document.getElementById("contact_modal");
     const closeCross = modal.querySelector("img");
@@ -52,6 +61,7 @@ function displayModal() {
     hideSuccessMessage();
 }
 
+//Hides the contact modal
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
@@ -61,6 +71,7 @@ function closeModal() {
     document.querySelector(".contact_modal_button").focus();
 }
 
+//Tests all the formular and sends the json result in the console
 function validateForm(e) {
 
     e.preventDefault();

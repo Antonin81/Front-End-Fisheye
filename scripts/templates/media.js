@@ -6,6 +6,7 @@ function mediaTemplate(data) {
     const picturePath = `assets/Sample_Photos/${photographerId}/${image}`;
     const videoPath = `assets/Sample_Photos/${photographerId}/${video}`;
  
+    //Creates the dom for the media grid of the photographer page
     function getPictureGridCardDOM(mediaOrder) {
         const pictureCard = document.createElement("article");
         pictureCard.classList.add("picture");
@@ -57,6 +58,7 @@ function mediaTemplate(data) {
         return pictureCard;
     }
 
+    //Creates the dom for the content of the lightbox
     function getLightboxMediaDOM(mediaOrder){
         const lightboxMediaContainer = document.createElement("li");
         lightboxMediaContainer.setAttribute("data-order",mediaOrder);

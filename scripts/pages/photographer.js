@@ -1,6 +1,7 @@
 import { photographerTemplate } from "../templates/photographer.js";
 import { mediaTemplate } from "../templates/media.js";
 
+//gets the photographer that has for id the object "id" from the database
 async function getPhotographer(id) {
 
     let photographer=null;
@@ -20,6 +21,7 @@ async function getPhotographer(id) {
     return ({photographer: photographer});
 }
 
+//gets all the pictures of one photographer
 async function getPictures(id){
 
     let pictures = [];
@@ -39,6 +41,7 @@ async function getPictures(id){
     return pictures;
 }
 
+//displays all the photographer page's content
 async function displayData(photographer, pictures) {
     const main = document.getElementById("main");
     const header = main.querySelector(".photograph-header");

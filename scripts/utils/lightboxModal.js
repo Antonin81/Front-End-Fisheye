@@ -1,9 +1,13 @@
 let order = null;
 
+//displays the lightbox modal
+
 function displayMedia(){
     const lightbox = document.getElementById("lightbox_modal");
     lightbox.querySelector(`[data-order="${order}"]`).style.display="block";
 }
+
+//shows the previous media in the lightbox
 
 function previousMedia(){
     const lightbox = document.getElementById("lightbox_modal");
@@ -25,6 +29,8 @@ function previousMedia(){
 
 }
 
+//shows the next media in the lightbox
+
 function nextMedia(){
     const lightbox = document.getElementById("lightbox_modal");
     const maxOrder = lightbox.getAttribute("data-max-order");
@@ -43,6 +49,8 @@ function nextMedia(){
     }
 }
 
+//closes the lightbox
+
 function closeLightboxModal(){
     const lightbox = document.getElementById("lightbox_modal");
     lightbox.style.display="none";
@@ -51,6 +59,8 @@ function closeLightboxModal(){
     lightbox.setAttribute("aria-hidden","true");
     document.getElementById("pictures").querySelector(`[data-order="${order}"]`).querySelector("a").focus();
 }
+
+//opens the lightbox
 
 function openLightboxModal(e){
     order = parseInt(e.target.parentElement.getAttribute("data-order"));
@@ -62,13 +72,14 @@ function openLightboxModal(e){
     document.getElementById("contact_modal").setAttribute("aria-hidden","true");
     lightbox.setAttribute("aria-hidden","false");
     cross.focus();
-    cross.addEventListener("click", ()=>{closeLightboxModal();});
     let mediasList = lightbox.querySelectorAll("li");
     for (let media of mediasList){
         media.style.display="none";
     }
     displayMedia();
 }
+
+//initializes the lightbox
 
 function initLightbox(){
     const cross = document.querySelector(".lightbox-cross");

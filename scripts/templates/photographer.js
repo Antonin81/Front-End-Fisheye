@@ -3,6 +3,8 @@ function photographerTemplate(data) {
     const picture = `assets/photographers/${portrait}`;
     const likeButtons = document.querySelectorAll(".like-button");
 
+
+    //Creates the dom for a photographer card on the home page
     function getUserCardDOM() {
 
         const article = document.createElement( "article" );
@@ -42,7 +44,7 @@ function photographerTemplate(data) {
     }
 
     
-
+    //Creates the dom for a photographer card on the photographer page
     function getUserDescDOM() {
 
         const headerFirstPart = document.createElement("div");
@@ -68,6 +70,7 @@ function photographerTemplate(data) {
         return {headerFirstPart,img};
     }
 
+    //Creates the dom for the bottom section of the photographer page
     function getBottomSectionDOM(likesCount){
 
         const bottomSection = document.createElement("div");
@@ -96,6 +99,7 @@ function photographerTemplate(data) {
         return bottomSection;
     }
 
+    //adds event listeners to like buttons on medias in the photographer page
     function eventLikeButtons(){
         for (let likeButton of likeButtons){
             likeButton.addEventListener("click",()=>{

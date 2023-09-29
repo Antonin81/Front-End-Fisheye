@@ -2,6 +2,7 @@ import {getPhotographer, getPictures} from "../pages/photographer.js";
 import { mediaTemplate } from "../templates/media.js";
 import { photographerTemplate } from "../templates/photographer.js";
 
+//opens the select dropdown
 function openDropdown(dropdown){
     const button = document.getElementById("sortSelect");
     dropdown.classList.remove("hidden");
@@ -10,6 +11,7 @@ function openDropdown(dropdown){
     button.setAttribute("tabindex","-1"); 
 }
 
+//closes the select dropdown
 function closeDropdown(dropdown){
     const button = document.getElementById("sortSelect");
     dropdown.classList.add("hidden");
@@ -18,6 +20,7 @@ function closeDropdown(dropdown){
     button.setAttribute("tabindex","0");
 }
 
+//opens or closes the select dropdown depending of its current state
 function toggleDropdown(){
     const dropdown = document.querySelector(".test-dropdown");
     if(dropdown.classList.contains("hidden")){
@@ -27,6 +30,7 @@ function toggleDropdown(){
     }
 }
 
+//sorts all the medias by date/popularity/title
 async function sortMedias(sortMode){
     const urlParams = new URL(document.location).searchParams;
     const picturesSection = document.getElementById("pictures");
@@ -104,6 +108,7 @@ async function sortMedias(sortMode){
     
 }
 
+//handles the option selection in the select dropdown. Rearranges the order of the options and calls some previous functions like sortMedias or closeDropdown
 function optionSelected(e){
     let target = e.target;
     let dropdownButton = document.getElementById("sortSelect");
@@ -124,6 +129,7 @@ function optionSelected(e){
     closeDropdown(ulTarget);
 }
 
+//initializes the sort system and sorts the media grid by title at the rendering of the photographer page
 function initTri(){
     document.getElementById("sortSelect").addEventListener("click",toggleDropdown);
     document.querySelectorAll(".test-dropdown button").forEach(button=>{
