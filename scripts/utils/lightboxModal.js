@@ -82,19 +82,16 @@ function initLightbox(){
 
     leftArrow.addEventListener("keydown",(e)=>{
         if(e.code=="Enter"){
-            console.log(e.code);
             leftArrow.click();
         }
     });
     rightArrow.addEventListener("keydown",(e)=>{
         if(e.code=="Enter"){
-            console.log(e.code);
             rightArrow.click();
         }
     });
     cross.addEventListener("keypress",(e)=>{
         if(e.code=="Enter"){
-            console.log(e.code);
             cross.click();
         }
     });

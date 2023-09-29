@@ -14,7 +14,7 @@ function closeDropdown(dropdown){
     const button = document.getElementById("sortSelect");
     dropdown.classList.add("hidden");
     dropdown.setAttribute("aria-hidden","true");
-    dropdown.focus();
+    button.focus();
     button.setAttribute("tabindex","0");
 }
 
@@ -58,11 +58,9 @@ async function sortMedias(sortMode){
                 let aLikes = a.likes;
                 let bLikes = b.likes;
                 if(likedList.includes(a.id.toString())){
-                    console.log("a");
                     aLikes++;
                 }
                 if(likedList.includes(b.id.toString())){
-                    console.log("b");
                     bLikes++;
                 }
                 if(aLikes < bLikes){
