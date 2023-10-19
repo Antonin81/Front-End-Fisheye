@@ -63,7 +63,11 @@ function closeLightboxModal(){
 //opens the lightbox
 
 function openLightboxModal(e){
-    order = parseInt(e.target.parentElement.getAttribute("data-order"));
+    let article = e.target;
+    while (!article.classList.contains("picture")){
+        article=article.parentElement;
+    }
+    order = parseInt(article.getAttribute("data-order"));
     const lightbox = document.getElementById("lightbox_modal");
     const cross = document.querySelector(".lightbox-cross");
     lightbox.style.display="block";
