@@ -11,6 +11,7 @@ function mediaTemplate(data) {
         const pictureCard = document.createElement("article");
         pictureCard.classList.add("picture");
         pictureCard.setAttribute("data-order",mediaOrder);
+        pictureCard.setAttribute("data-id", id);
 
         const pictureLink = document.createElement("a");
         pictureLink.setAttribute("href","#");
@@ -62,6 +63,7 @@ function mediaTemplate(data) {
     function getLightboxMediaDOM(mediaOrder){
         const lightboxMediaContainer = document.createElement("li");
         lightboxMediaContainer.setAttribute("data-order",mediaOrder);
+        lightboxMediaContainer.setAttribute("data-lightbox-id",id);
 
         if(image!=undefined){
 

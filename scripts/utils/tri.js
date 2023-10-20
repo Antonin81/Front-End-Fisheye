@@ -1,6 +1,4 @@
 import {getPhotographer, getPictures} from "../pages/photographer.js";
-import { mediaTemplate } from "../templates/media.js";
-import { photographerTemplate } from "../templates/photographer.js";
 
 //opens the select dropdown
 function openDropdown(dropdown){
@@ -43,8 +41,8 @@ async function sortMedias(sortMode){
     document.querySelectorAll("[data-liked=true]").forEach(liked => {
         likedList.push(liked.getAttribute("data-image"));
     });
-    picturesSection.innerHTML="";
-    lightbox.innerHTML="";
+    // picturesSection.innerHTML="";
+    // lightbox.innerHTML="";
     switch (sortMode) {
         case "title":
             pictures.sort((a,b)=>{
@@ -91,20 +89,14 @@ async function sortMedias(sortMode){
             break;
     }
     for (let picture of pictures){
-        const pictureCard = mediaTemplate(picture).getPictureGridCardDOM(mediaOrder);
-        const pictureLikeButton = pictureCard.querySelector("em");
-        if(likedList.includes(pictureLikeButton.getAttribute("data-image"))){
-            pictureLikeButton.setAttribute("data-liked",true);
-            pictureLikeButton.classList.remove("fa-regular");
-            pictureLikeButton.classList.add("fa-solid");
-            pictureLikeButton.previousSibling.textContent++;
-        }
+        let pictureCard = document.querySelector(`[data-id="${picture.id}"]`);
+        pictureCard.setAttribute("data-order",mediaOrder);
         picturesSection.appendChild(pictureCard);
-        lightbox.appendChild(mediaTemplate(picture).getLightboxMediaDOM(mediaOrder));
-        
+        let lightboxCard = document.querySelector(`[data-lightbox-id="${picture.id}"]`);
+        lightboxCard.setAttribute("data-order",mediaOrder);
+        lightbox.appendChild(lightboxCard);
         mediaOrder+=1;
     }
-    photographerTemplate({}).eventLikeButtons();
     
 }
 
@@ -138,6 +130,4 @@ function initTri(){
     sortMedias("title");
 }
 
-initTri();
-
-export{toggleDropdown, optionSelected};
+export{toggleDropdown, optionSelected, initTri};

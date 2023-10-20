@@ -1,5 +1,6 @@
 import { photographerTemplate } from "../templates/photographer.js";
 import { mediaTemplate } from "../templates/media.js";
+import { initTri } from "../utils/tri.js";
 
 //gets the photographer that has for id the object "id" from the database
 async function getPhotographer(id) {
@@ -53,9 +54,10 @@ async function displayData(photographer, pictures) {
     let likesCount = 0;
     let mediaOrder = 0;
     const picturesSection = document.getElementById("pictures");
+    let lightboxContentSection = document.querySelector(".lightbox-medias");
     for (let picture of pictures){
         picturesSection.appendChild(mediaTemplate(picture).getPictureGridCardDOM(mediaOrder));
-        lightbox.appendChild(mediaTemplate(picture).getLightboxMediaDOM(mediaOrder));
+        lightboxContentSection.appendChild(mediaTemplate(picture).getLightboxMediaDOM(mediaOrder));
         mediaOrder+=1;
     }
 
@@ -77,6 +79,8 @@ async function init() {
     let modalTitle = document.getElementById("contact_modal-h2");
     modalTitle.textContent = modalTitle.textContent+" "+photographer.name;
     modalTitle.setAttribute("aria-label",modalTitle.getAttribute("aria-label")+" "+photographer.name);
+    photographerTemplate({}).eventLikeButtons();
+    initTri();
 }
 
 init();
